@@ -1,0 +1,21 @@
+.myContainer{
+	color: lightgrey;
+	/*background: linear-gradient( rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2) ), url("/img/paper.png") no-repeat center center fixed;*/
+	/*background-size: cover;*/
+	position: relative;
+	top: 10px;
+	border-radius: 10px;
+}
+.centerText{
+	text-align: center;
+}
+.full_size_btn{
+	height: 100%;
+	width: 100%;
+}
+#registeredBox{
+	border: 5px solid grey;
+}
+small{
+	color: lightblue;
+}

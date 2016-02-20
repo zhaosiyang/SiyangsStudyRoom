@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Siyang's Study Room</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+    <link type="text/css" rel="stylesheet" href="/css/main.css">
+  </head>
+  <body background="/img/bg.jpg">
+<!--******************************  put your code between ********************************-->
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12 myContainer centerText">
+          <h1>Siyang's Study Room</h1>
+        </div>
+      </div>
+      <br>
+      <div class="row">
+<!--         <div class="col-md-3 col-md-push-9 col-xs-12" id="displayRegisterBox">
+          <div class="container-fluid">
+            <div class="row RegisterBox">
+              <div class="col-xs-6 col-md-12 myContainer" id="signUpBox">
+                <button type="button" class="btn btn-danger full_size_btn" data-toggle="modal" data-target="#signUpModel">Sign Up</button>
+              </div>
+              <div class="col-xs-6 col-md-12 myContainer" id="logInBox">
+                <button type="button" class="btn btn-warning full_size_btn" data-toggle="modal" data-target="#logInModel">Log In</button>
+              </div>
+            </div>
+          </div>
+        </div> -->
+
+        <div class="col-md-3 col-md-push-9 col-xs-12" id="displayRegisteredBox">
+          <div class="container-fluid">
+            <div class="row RegisterBox" id="registeredBox">
+              <div class="col-xs-7 col-md-12">
+                <h3 style="color: lightgreen;">Logged in as:</h3>
+                <h4 style="color: lightgrey;">{{entry.username}}</h4>
+              </div>
+              <div class="col-xs-2 col-md-12">
+                <h3 style="color: lightgreen;">credit:</h3>
+                <h4 style="color: lightgrey;">$ {{entry.credit}}</h4>
+              </div>
+              <div class="col-xs-3 col-md-12">
+                <a href="/">
+                  <button class="btn btn-success" id="logOut">Log Out</button>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-9 col-md-pull-3 col-xs-12 myContainer">
+          <h3>Timetable</h3>
+          <table class="table table-hover">
+            <tr>
+              <th>Class ID</th>
+              <th>Time</th>
+              <th>Location</th>
+              <th>Topic</th>
+              <th>Occupancies</th>
+              <th>Price</th>
+              <th>Note</th>
+              <th>BOOK NOW!</th>
+            </tr>
+            {% for classEntry in classEntries %}
+            <tr>
+              <td>{{classEntry.classID}}</td>
+              <td>{{classEntry.time}}</td>
+              <td>{{classEntry.location}}</td>
+              <td>{{classEntry.topic}}</td>
+              <td>{{classEntry.occupancy}}/{{classEntry.capacity}}</td>
+              <td>${{classEntry.price}}</td>
+              <td>{{classEntry.note}}</td>
+              <td><button class="btn btn-info reserveButtonOK" id="{{classEntry.classID}}">
+                {% if classEntry.occupancy >= classEntry.capacity %}
+                  Full
+                {% elif classEntry.classID in booked %}
+                  Booked
+                {% else %}
+                  Available
+                {% endif %}
+              </button></td>
+            </tr>
+            {% endfor %}
+            <!-- <tr>
+               <td>CSC108-0101</td>
+               <td>2016-01-16 3pm-6pm</td>
+               <td>Gerstain Library 2001</td>
+               <td>Basics</td>
+               <td>0/5</td>
+               <td>$30</td>
+               <td>Bring youe laptop</td>
+               <td><button class="btn btn-info">Reserve</button></td>
+             </tr>
+             <tr>
+               <td>CSC108-0102</td>
+               <td>2016-01-16 3pm-6pm</td>
+               <td>Gerstain Library 2001</td>
+               <td>Basics</td>
+               <td>0/5</td>
+               <td>$30</td>
+               <td>Bring youe laptop</td>
+               <td><button class="btn btn-info">Reserve</button></td>
+             </tr>  -->
+          </table>
+        </div>
+      </div>
+      <br>
+      <div class="row">
+        <div class="col-xs-12 myContainer">
+          <h3 style="color: red;">Notifications:</h3>
+          {% for entry in notificationEntries %}
+            <h4>{{entry.title}} <small>{{entry.creat_time}}</small></h4>
+            <p>{{entry.contents}}</p>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+<!--******************************  put your code between ********************************-->  
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    <script src="/js/helper.js"></script>
+    <script type="text/javascript" src="/js/jquery-showpassword.js"></script>
+    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    <script src="/js/main.js"></script>
+  </body>
+</html>
